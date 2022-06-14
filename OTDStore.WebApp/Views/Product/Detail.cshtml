@@ -1,0 +1,101 @@
+﻿@model ProductDetailViewModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@{
+    ViewData["Title"] = "Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="detail-col-1">
+            <img class="detail-image" src="@(Configuration["BaseAddress"] + Model.Product.ThumbnailImage)" alt="">
+        </div>
+        <div class="detail-col-2">
+            <p class="detail-name">@Model.Product.Name</p>
+            <p class="detail-brand">Thương hiệu: @Model.Brand.Name</p>
+            <p class="detail-brand">Cấu hình sản phẩm:</p>
+            <div class="detail-option">
+                <p class="option-ram">@Model.Product.RAM</p>
+                <p class="option-memory">@Model.Product.Memory</p>
+                <p class="option-color">@Model.Product.Color</p>
+            </div>
+            @if (Model.Product.Stock > 0)
+            {
+                <p class="detail-status">Trạng thái: Còn hàng</p>
+            }
+            else
+            {
+                <p class="detail-status">Trạng thái: Hết hàng</p>
+            }
+            <p class="detail-price">@Model.Product.OriginalPrice.ToString("0,0.") &#8363</p>
+            <p class="detail-pricePromotion">@Model.Product.Price.ToString("0,0.") &#8363</p>
+            <button class="detail-btn btn-add-cart" data-id="@Model.Product.Id">Mua Ngay</button>
+            <p class="detail-status">@Model.Product.Description</p>
+        </div>
+    </div>
+</div>
+<hr class="break-line">
+<h2 class="productRecommend">Chi tiết sản phẩm</h2>
+<hr class="break-line-rec">
+<div class="row">
+    <div class="detail-product-info">
+        <p>
+            Tên sản phẩm:
+            <span>@Model.Product.Name</span>
+        </p>
+        <p>
+            Hãng sản xuất:
+            <span>@Model.Brand.Name</span>
+        </p>
+        <p>
+            Màu sắc:
+            <span>@Model.Product.Color</span>
+        </p>
+        <p>
+            Dung lượng:
+            <span>@Model.Product.Memory</span>
+        </p>
+        <p>
+            RAM:
+            <span>@Model.Product.RAM</span>
+        </p>
+        <p>
+            Camera:
+            <span>@Model.Product.Camera</span>
+        </p>
+        <p>
+            Bluetooth:
+            <span>@Model.Product.Bluetooth</span>
+        </p>
+        <p>
+            Năm sản xuất:
+            <span>@Model.Product.YearRelease</span>
+        </p>
+    </div>
+</div>
+@*<h2 class="productRecommend">Sản phẩm mới nhất</h2>
+<hr class="break-line-rec">
+<div class="productRecommend-list">
+    <div class="roww">
+        @foreach (var item in Model.RelatedProducts)
+        {
+            <div class="product-item">
+                <a href='/Product/Detail/@item.Id' new { id=item.Id })>
+                    <img class="product-item-img" src="@(Configuration["BaseAddress"] + item.ThumbnailImage)" alt="">
+                    <p class="product-item-name">@item.Name</p>
+                    <p class="product-item-name">@item.Color/@item.Memory/@item.RAM</p>
+                    <p class="product-item-promotion">@item.OriginalPrice.ToString("0,0.") &#8363</p>
+                    <p class="product-item-price">@item.Price.ToString("0,0.") &#8363</p>
+                    @if (item.Stock > 0)
+                    {
+                        <p class="product-item-status">Sẵn sàng</p>
+                    }
+                    else
+                    {
+                        <p class="product-item-status">Hết hàng</p>
+                    }
+                </a>
+            </div>
+        }
+    </div>
+</div>*@
+

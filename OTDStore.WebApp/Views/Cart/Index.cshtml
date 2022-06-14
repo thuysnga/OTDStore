@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+    <script src="~/js/cart.js"></script>
+    <script>
+        var cartController = new CartController();
+        cartController.initialize();
+    </script>
+}
+
+<div class="container">
+    <div class="row__cart">
+        <h1 class="cart__title">
+            GIỎ HÀNG [<small><span id="lbl_number_of_items"></span> sản phẩm</small>]
+        </h1>
+        <div class="cart__table">
+            <div class="cart__listItem">
+            </div>
+            <div class="cart__payment">
+                <p class="payment__title">THÔNG TIN ĐƠN HÀNG</p>
+                <p class="payment__desc">Tổng tiền: <span id="lbl_total"> &#8363</span></p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="/Cart/Checkout/"><button class="cart__btn">THANH TOÁN</button></a>
+                }
+                else
+                {
+                    <a href="/Account/Login"><button class="cart__btn"> ĐĂNG NHẬP và THANH TOÁN</button></a>
+                }
+
+            </div>
+        </div>
+        <div class="cart-btn">
+            <a href="/Product/Index"><button class="cart-btn__continue">TIẾP TỤC MUA HÀNG</button></a>
+        </div>
+
+        <p class="cart__policy-title">Chính sách Đổi/Trả</p>
+        <ul class="cart__policy">
+            <li>Sản phẩm được đổi 1 lần duy nhất, không hỗ trợ trả.</li>
+            <li>Sản phẩm còn đủ tem mác, chưa qua sử dụng.</li>
+            <li>Sản phẩm nguyên giá được đổi trong 30 ngày trên toàn hệ thống.</li>
+            <li>Sản phẩm sale chỉ hỗ trợ đổi (nếu cửa hàng còn) trong 7 ngày trên toàn hệ thống.</li>
+        </ul>
+    </div>
+</div>

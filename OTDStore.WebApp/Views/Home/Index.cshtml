@@ -1,0 +1,93 @@
+﻿@model HomeViewModel
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="slider">
+    <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <div class="slide firts">
+            <a><img src="/theme/assets/Poster1.png" alt="" class="img__promotion"></a>
+        </div>
+        <div class="slide">
+            <a><img src="/theme/assets/Poster2.png" alt="" class="img__promotion"></a>
+        </div>
+        <div class="slide-auto">
+            <div class="auto-btn-1"></div>
+            <div class="auto-btn-2"></div>
+        </div>
+    </div>
+    <div class="slide-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+            <h2 class="col-1-brand">Apple</h2>
+            <h1 class="col-1-name">IPHONE 13 SIÊU PHẨM KHÔNG THỂ BỎ LỠ</h1>
+            <p class="col-1-content">iPhone mới kế thừa thiết kế đặc trưng từ iPhone 12 Pro Max khi sở hữu khung viền vuông vức, mặt lưng kính cùng màn hình tai thỏ tràn viền nằm ở phía trước.</p>
+            <a href="/Product/?categoryId=1&brandId=2&keyword=iphone+13"><button class="col-1-btn">Khám Phá Ngay</button></a>
+            <a href="/Product?categoryId=1&brandId=2&keyword="><button class="col-1-btn__sub">Xem Thêm</button></a>
+        </div>
+        <div class="col-2">
+            <img src="https://cdn.tgdd.vn/Products/Images/42/223602/iphone-13-blue-1-600x600.jpg" class="col-2-img">
+        </div>
+    </div>
+</div>
+<div class="container custom-scrollbar">
+    <div class="about">
+        <div class="row row-about">
+            <div class="about-col-3">
+                <i class="fas fa-shipping-fast"></i>
+                <h2>Freeship Toàn Quốc</h2>
+                <p>Miễn phí vận chuyển trên toàn quốc và thời gian giao hàng chỉ trong vòng vài ngày </p>
+            </div>
+            <div class="about-col-3">
+                <i class="fas fa-award"></i>
+                <h2>Cam kết chính hãng</h2>
+                <p>Đảm bảo chất lượng sản phẩm tốt nhất và cam kết sản phẩm chính hãng cùng với những chính sách đổi trả nếu sản phẩm kém chất lượng</p>
+            </div>
+            <div class="about-col-3">
+                <i class="fas fa-search-dollar"></i>
+                <h2>Giá cả tốt nhất</h2>
+                <p>Cam kết mức giá tốt nhất trên thị trường ở các phân khúc sản phẩm khác nhau và chính sách hoàn tiền theo quy định</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row intro-product">
+        <div class="intro-mac">
+            <img src="/theme/assets/macbook-pro-2021-06.jpg" alt="">
+        </div>
+        <div class="intro-mac_content">
+            <hr>
+            <h1 class="mac_content-title">Macbook Pro 2021</h1>
+            <p class="mac_content-desc">Macbook Pro 16-inch 2021 M1 Pro 512GB vừa được Apple trình làng trong sự kiện Unleashed vào 0h ngày 19/10 theo giờ Việt Nam. Đây là siêu phẩm được cải tiến vượt bậc về mọi mặt từ chip Apple M1 Pro đến màn hình hỗ trợ công nghệ mini-LED, Pro Motion 120 Hz.!</p>
+            <a href="/Product?categoryId=2&brandId=2&keyword=macbook+pro+2021" class="mac_content-link">Khám phá ngay</a>
+        </div>
+    </div>
+    <div class="row intro-product">
+        <div class="intro-mac">
+            <img src="/theme/assets/sm-f926_zfold3_5g.jpg" alt="">
+        </div>
+        <div class="intro-mac_content">
+            <hr>
+            <h1 class="mac_content-title">Samsung Galaxy Z Fold 3 5G</h1>
+            <p class="mac_content-desc">Với sự thành công đáng kinh ngạc và luôn cháy hàng từ lúc ra mắt đến thời điểm hiện tại của hai thế hệ trước là Fold 1 và Z Fold 2. Galaxy Z Fold 3 lần này được ra mắt với độ hoàn thiện cao về thiết kế và hiệu năng. Mang đến cho người dùng một trải nghiệm cực kỳ thú vị hơn.!</p>
+            <a href="/Product?categoryId=1&brandId=1&keyword=Samsung+Galaxy+Z+Fold+3" class="mac_content-link">Khám phá ngay</a>
+        </div>
+    </div>
+    <div class="row intro-product">
+        <div class="intro-mac">
+            <img src="/theme/assets/ipad-pro-11-2021-1.jpg" alt="">
+        </div>
+        <div class="intro-mac_content">
+            <hr>
+            <h1 class="mac_content-title">Ipad Pro 2021</h1>
+            <p class="mac_content-desc">iPad Pro 2021 là dòng sản phẩm máy tính bảng cao cấp vừa được Apple ra mắt tại sự kiện Apple Spring Loaded vừa qua. Với thiết kế thời thượng cùng hiệu năng cực khủng iPad Pro 2021 M1 chắc chắn sẽ là một lựa chọn tuyệt vời trong công việc, học tập cũng như giải trí.!</p>
+            <a href="/Product?categoryId=5&brandId=2&keyword=Ipad+Pro+2021" class="mac_content-link">Khám phá ngay</a>
+        </div>
+    </div>
+</div>

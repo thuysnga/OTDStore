@@ -1,0 +1,42 @@
+﻿@model OTDStore.ViewModels.Catalog.Products.BrandAssignRequest
+
+@{
+    ViewData["Title"] = "Gán thương hiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<<div class="container-fluid">
+
+    <!-- Page Heading -->
+     <h1 class="h3 mb-2 text-gray-800">Gán danh mục</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a class="btn btn-success" asp-action="Index" asp-controller="Product">Về danh sách</a>
+        </div>
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="BrandAssign">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    @for (var i = 0; i < Model.Brands.Count; i++)
+                    {
+                        <div class="form-group">
+                            <label>
+                                @Model.Brands[i].Name
+                                <input type="checkbox" asp-for="Brands[i].Selected" />
+                                <input type="hidden" asp-for="Brands[i].Id" />
+                                <input type="hidden" asp-for="Brands[i].Name" />
+                            </label>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

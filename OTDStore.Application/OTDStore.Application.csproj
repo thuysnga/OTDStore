@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.15.0" />
+    <PackageReference Include="EPPlus" Version="5.8.4" />
+    <PackageReference Include="ExcelNumberFormat" Version="1.1.0" />
+    <PackageReference Include="GemBox.Spreadsheet" Version="47.0.1345" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OTDStore.Data\OTDStore.Data.csproj" />
+    <ProjectReference Include="..\OTDStore.Utilities\OTDStore.Utilities.csproj" />
+    <ProjectReference Include="..\OTDStore.ViewModels\OTDStore.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

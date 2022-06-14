@@ -1,0 +1,32 @@
+﻿@using OTDStore.ViewModels.System.Users
+@model LoginRequest
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Account/Shared/_Layout.cshtml";
+}
+    <div class="app">
+        <div class="login">
+            <div class="login-box">
+                <div class="login-col-1">
+                    <a href="/Home/Index">
+                        <h1>OTD Store</h1>
+                    </a>
+                    <p>Xin chào quý khách.</p>
+                    <img src="/theme/assets/logoOTDstr-01.png" alt="">
+                </div>
+                <div class="login-col-2">
+                    <h1 class="login-name">ĐĂNG NHẬP</h1>
+                    <form action="/Account/Login" method="post" class="login-div">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <p class="login-label">USERNAME</p>
+                        <input type="text" placeholder="Username" class="login-input" name="UserName">
+                        <p class="login-label">PASSWORD</p>
+                        <input type="password" placeholder="Password" class="login-input" name="PassWord">
+                        <p class="login-forgot"><a href="/Account/ResetPassword">Quên mật khẩu?</a></p>
+                        <button type="submit" class="login-btn">Đăng nhập</button>
+                        <p class="login-not">Không phải thành viên?<a href="/Account/Register">Đăng ký!</a></p>
+                    </form>                  
+                </div>
+            </div>
+        </div>
+    </div>

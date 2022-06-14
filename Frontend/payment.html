@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="icon" href="https://pbs.twimg.com/media/E8FCOogXMAEXpJg.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Thanh toán</title>
+</head>
+
+<body>
+    <div class="app">
+        <div class="container">
+            <nav class="navbar">
+                <a class="navbar-brand" href="./index.html">OTD</a>
+                <ul class="navbar-brand-list">
+                    <li><a href="./index.html">Trang chủ</a></li>
+                    <li><a href="./product.html">Sản phẩm</a></li>
+                    <li><a href="./about.html">Về chúng tôi</a></li>
+                </ul>
+                <div class="nav-login">
+                    <a href="./cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <Button class="nav-login-btn"><a href="./login.html">Đăng nhập</a></Button>
+                </div>
+            </nav>
+        </div>
+        <div class="row row-payment">
+            <h1 class="payment-title">Thông tin đơn hàng</h1>
+            <div class="payment-section">
+                <div class="payment__col-1">
+                    <input type="text" placeholder="Họ và tên" class="payment-input payment-name">
+                    <input type="text" placeholder="Email" class="payment-input payment-email">
+                    <input type="text" placeholder="Số điện thoại" class="payment-input payment-phone">
+                    <input type="text" placeholder="Địa chỉ" class="payment-input payment-addr">
+                    <div class="payment-complete">
+                        <a href="./cart.html">Giỏ hàng</a>
+                        <button class="payment-button">Hoàn thành đơn hàng</button>
+                    </div>
+                </div>
+                <div class="payment__col-2">
+                    <p class="payment-title_ship">Phương thức vận chuyển</p>
+                    <hr class="payment-line">
+                    <div class="payment-shipment">
+                        <p>Giao hàng tận nơi</p>
+                        <p>40,000đ</p>
+                    </div>
+                    <hr class="payment-line">
+                    <div class="payment-voucher">
+                        <input type="text" placeholder="Mã giảm giá" class="payment-input payment-code">
+                        <button class="payment-btn">Sử dụng</button>
+                    </div>
+                    <hr class="payment-line">
+                    <div class="payment-line_price">
+                        <p>Tạm tính</p>
+                        <p>420,000đ</p>
+                    </div>
+                    <div class="payment-line_price">
+                        <p>Phí vận chuyển</p>
+                        <p>40,000đ</p>
+                    </div>
+                    <hr class="payment-line">
+                    <div class="payment-line_price">
+                        <p>Tổng cộng</p>
+                        <p class="payment-total"><span class="payment-span">VND</span> 460,000đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="row row-footer">
+                <div class="footer-col">
+                    <ul class="footer-col-list">
+                        <li class="footer-brand"><img src="./assets/logoOTDstr-01.png" alt=""></li>
+                        <li>SĐT: 0847232292</li>
+                        <li>
+                            <div class="footer-icon">
+                                <i class="fab fa-facebook-square"></i>
+                                <i class="fab fa-instagram"></i>
+                                <i class="fab fa-twitter-square"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <ul class="footer-col-list">
+                        <li>Dịch vụ</li>
+                        <li>Mua sản phẩm</li>
+                        <li>Bán sản phẩm</li>
+                        <li>Trả sản phảm</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <ul class="footer-col-list">
+                        <li>Công ty</li>
+                        <li>About Us</li>
+                        <li>Contact Us</li>
+                        <li>Our Team</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <ul class="footer-col-list">
+                        <li>Hỗ trợ</li>
+                        <li>FAQ's</li>
+                        <li>Trung tâm hỗ trợ</li>
+                        <li>Trung tâm trợ giúp</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <ul class="footer-col-list">
+                        <li>Đăng ký</li>
+                        <li>Đăng ký thông tin</li>
+                        <li>Thông qua email <i class="far fa-envelope"></i> </li>
+                        <li><span>Copyright &copy;2021</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

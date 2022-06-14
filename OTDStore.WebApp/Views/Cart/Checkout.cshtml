@@ -1,0 +1,131 @@
+﻿@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+
+@if (TempData["SuccessMsg"] != null)
+{
+    <div class="about">
+        <div class="container">
+            <div class="row__about">
+                <h1 class="about__title">@TempData["SuccessMsg"]</h1>
+                <img src="/theme/assets/thank.webp" class="about__img">
+                <h2 class="about__locaton-title">LOCATION</h2>
+                <p class="about__detail">Thu Duc City, HCM City, Vietnam</p>
+                <p class="about__detail">Call +84945378809</p>
+                <h2 class="about__locaton-title">CONNECT US</h2>
+                <ul class="about__socials">
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-facebook-square"></i></li>
+                    <li><i class="fab fa-youtube"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row__cart">
+            <div class="cart__table">
+                <div class="cart__listItem">
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <div class="cart__list">
+                            <div class="cart__img">
+                                <img src="@(Configuration["BaseAddress"] + item.Image)" alt="">
+                            </div>
+                            <div class="cart__info">
+                                <div class="item__info">
+                                    <p class="item__info-name">@item.Name</p>
+                                    <p class="item__info-option">@item.Color/@item.Memory/@item.RAM</p>
+                                </div>
+                                <div class="item__quan">
+                                    <p>@item.Quantity</p>
+                                </div>
+                                <div class="item__price">@item.Price.ToString("0,0.") &#8363</div>
+                                <div class="item__price">@((item.Quantity * item.Price).ToString("0,0.")) &#8363</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-payment">
+        <h1 class="payment-title">Thông tin đơn hàng</h1>
+        <form class="payment-section" action="/Cart/Checkout" method="post">
+            <div class="payment__col-1">
+                <input type="hidden" asp-for="CheckoutModel.UserId" class="payment-input payment-name">
+                <input type="text" asp-for="CheckoutModel.Name" placeholder="Họ và tên" class="payment-input payment-name">
+                <span asp-validation-for="CheckoutModel.Name" class="text-danger"></span>
+                <input type="text" asp-for="CheckoutModel.Email" placeholder="Email" class="payment-input payment-email">
+                <span asp-validation-for="CheckoutModel.Email" class="text-danger"></span>
+                <input type="text" asp-for="CheckoutModel.PhoneNumber" placeholder="Số điện thoại" class="payment-input payment-phone">
+                <span asp-validation-for="CheckoutModel.PhoneNumber" class="text-danger"></span>
+                <input type="text" asp-for="CheckoutModel.Address" placeholder="Địa chỉ" class="payment-input payment-addr">
+                <span asp-validation-for="CheckoutModel.Address" class="text-danger"></span>
+                <h2 class="payment-method__title">Phương thức thanh toán</h2>
+                <div class="payment-checkbox">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="payment-checkbox__method">
+                        <input type="radio" asp-for="CheckoutModel.PaymentMethod" value="1" id="">
+                        <img src="/theme/assets//payment2.svg" alt="" srcset="">
+                        <p>Thanh toán trực tiếp</p>
+                    </div>
+                    <div class="payment-checkbox__method">
+                        <input type="radio" asp-for="CheckoutModel.PaymentMethod" value="2" id="">
+                        <img src="/theme/assets//payment1.svg" alt="" srcset="">
+                        <p>Thanh toán qua momo</p>
+                    </div>
+                    <div class="payment-checkbox__method">
+                        <input type="radio" asp-for="CheckoutModel.PaymentMethod" value="3" id="">
+                        <img src="/theme/assets//payment1.svg" alt="" srcset="">
+                        <p>Thanh toán qua STK</p>
+                    </div>
+                    <div class="payment-complete">
+                        <a href="/Cart/Index">Giỏ hàng</a>
+                        <button type="submit" class="payment-button">Hoàn thành đơn hàng</button>
+                    </div>
+                </div>
+            </div>
+            <div class="payment__col-2">
+                <p class="payment-title_ship">Phương thức vận chuyển</p>
+                <hr class="payment-line">
+                <div class="payment-shipment">
+                    <p>Giao hàng tận nơi</p>
+                    <p>Miễn phí</p>
+                </div>
+                <hr class="payment-line">
+                <div class="payment-line_price">
+                    <p>Tạm tính</p>
+                    <p>@Model.CartItems.Sum(x => x.Quantity * x.Price).ToString("0,0.") &#8363</p>
+                </div>
+                <hr class="payment-line">
+                <div class="payment-line_price">
+                    <p>Tổng cộng</p>
+                    <p class="payment-total"><span class="payment-span">VND</span> @Model.CartItems.Sum(x => x.Quantity * x.Price).ToString("0,0.") &#8363</p>
+                </div>
+                <div class="payment-checkbox__momo">
+                    <p>Thông tin chuyển khoản</p>
+                    <p>Chủ tài khoản: Nguyễn Minh Nhựt</p>
+                    <p>Số tài khoản: 0071000900804</p>
+                    <p>Vui lòng ghi thông tin ở nội dung chuyển tiền để đơn hàng được xác nhận nhanh chóng hơn. Cám ơn quý khách!</p>
+                </div>
+                <div class="payment-checkbox__momo">
+                    <p>Thông tin Momo</p>
+                    <p>Chủ tài khoản: Nguyễn Minh Nhựt</p>
+                    <p>Số tài khoản: 0393584324</p>
+                    <p>Vui lòng ghi thông tin ở nội dung chuyển tiền để đơn hàng được xác nhận nhanh chóng hơn. Cám ơn quý khách!</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="cart-btn">
+        <a href="/Product/Index"><button class="cart-btn__continue">TIẾP TỤC MUA HÀNG</button></a>
+    </div>
+}
+

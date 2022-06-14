@@ -1,0 +1,105 @@
+﻿@using OTDStore.ViewModels.Common;
+@model PagedResult<OTDStore.ViewModels.Sales.OrderVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 2000);
+    </script>
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Danh sách đơn hàng</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a class="btn btn-success" asp-action="Create" asp-controller="User">Tạo mới</a>
+        </div>
+        <div class="card-header py-3">
+            <form asp-action="Index" method="get">
+                <div class="row">
+                    <div class="col-md-7">
+                        <input type="text" value="@ViewBag.Keyword" name="keyword" class="form-control" />
+                    </div>
+                    <div class="cold-md-5">
+                        <button type="submit" class="btn btn-primary">Tìm</button>
+                        <button type="button" onclick="window.location.href='/Order/Index'" class="btn btn-dark">Reset</button>
+                        <button type="button" onclick="window.location.href='/Order/RevenueStatistic'" class="btn btn-dark">Thống kê</button>
+                        <button type="button" onclick="window.location.href='/Order/Print'" class="btn btn-dark">In hóa đơn</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @if (ViewBag.SuccessMsg != null)
+                {
+                    <div id="msgAlert" class="alert alert-success" role="alert">
+                        @ViewBag.SuccessMsg
+                    </div>
+                }
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mã
+                            </th>
+                            <th>
+                                Họ tên
+                            </th>
+                            <th>
+                                Số điện thoại
+                            </th>
+                            <th>
+                                Ngày tạo
+                            </th>
+                            <th>
+                                Tổng tiền
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ShipName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ShipPhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Xem", "Detail", new { id = item.Id }) |
+                                    @Html.ActionLink("Trạng thái", "Edit", new { id = item.Id }) |                                  
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @await Component.InvokeAsync("Pager", Model)
+        </div>
+    </div>
+</div>

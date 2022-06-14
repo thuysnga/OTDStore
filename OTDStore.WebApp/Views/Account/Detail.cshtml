@@ -1,0 +1,97 @@
+﻿@model OTDStore.ViewModels.Sales.OrderVM
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var payment = "";
+    if (Model.PaymentMethod == "1")
+    {
+        payment = "Thanh toán khi nhận hàng";
+    }
+    else
+    {
+        if (Model.PaymentMethod == "2")
+        {
+            payment = "Thanh toán qua Momo";
+        }
+        else
+            payment = "Thanh toán qua STK";
+    }
+}
+
+<div class="about">
+    <div class="account">
+        <div class="account__nav">
+            <a href="/Account/Edit">
+                <div class="account__nav--profile">Thông tin cá nhân</div>
+            </a>
+            <a href="/Account/ChangePassword">
+                <div class="account__nav--profile">Đổi mật khẩu</div>
+            </a>
+            <a href="/Account/Order">
+                <div class="account__nav--profile">Đơn hàng</div>
+            </a>
+        </div>
+        <div class="account__info">
+            <h2>Chi tiết đơn hàng</h2>
+            <div class="col-md-10">
+                <dl class="order-row">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.OrderDate)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Total)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Total)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.PaymentMethod)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @payment
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+                </dl>
+            </div>
+            <table class="order__table">
+                <thead>
+                    <tr>
+                            <th>Tên</th>
+                            <th>Thông số</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach (var item in Model.OrderDetails)
+                    {
+                        var total = item.Price * item.Quantity;
+                        <tr>
+                            <th>@item.Name</th>
+                            <th>@item.Color/@item.Memory/@item.RAM</th>
+                            <th>@item.Quantity</th>
+                            <th>@item.Price.ToString("0,0.") &#8363</th>
+                            <th>@total.ToString("0,0.") &#8363</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>            
+        </div>
+    </div>
+</div>
+

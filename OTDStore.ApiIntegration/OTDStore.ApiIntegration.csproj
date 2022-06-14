@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OTDStore.Utilities\OTDStore.Utilities.csproj" />
+    <ProjectReference Include="..\OTDStore.ViewModels\OTDStore.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

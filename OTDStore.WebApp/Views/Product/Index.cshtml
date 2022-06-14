@@ -1,0 +1,56 @@
+﻿@using OTDStore.ViewModels.Common;
+@model PagedResult<OTDStore.ViewModels.Catalog.Products.ProductVM>
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
+@{
+    ViewData["Title"] = "Feature";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+        <div class="typeProducts">
+            <form asp-action="Index" method="get">
+                <div class="rowww">
+                    <div class="col-md-7">
+                        <select name="categoryId" onchange="this.form.submit()" asp-items="@ViewBag.Categories"
+                                class="form-control nav-filter__menu">
+                            <option>--Chọn danh mục--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7">
+                        <select name="brandId" onchange="this.form.submit()" asp-items="@ViewBag.Brands"
+                                class="form-control nav-filter__menu">
+                            <option>--Chọn thương hiệu--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" value="@ViewBag.Keyword" name="keyword" class="Search-product" placeholder="Tìm kiếm">
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+<div class="container">
+    <div class="roww">
+        @foreach (var item in Model.Items)
+        {
+            <div class="product-item">
+                <a href='/Product/Detail/@item.Id' new { id=item.Id })>
+                    <img class="product-item-img" src="@(Configuration["BaseAddress"] + item.ThumbnailImage)" alt="">
+                    <p class="product-item-name">@item.Name</p>
+                    <p class="product-item-name">@item.Color/@item.Memory/@item.RAM</p>
+                    <p class="product-item-promotion">@item.OriginalPrice.ToString("0,0.") &#8363</p>
+                    <p class="product-item-price">@item.Price.ToString("0,0.") &#8363</p>
+                    @if (item.Stock > 0)
+                    {
+                        <p class="product-item-status">Sẵn sàng</p>
+                    }
+                    else
+                    {
+                        <p class="product-item-status">Hết hàng</p>
+                    }
+                </a>
+            </div>
+        }
+    </div>
+</div>
+@await Component.InvokeAsync("Pager", Model)

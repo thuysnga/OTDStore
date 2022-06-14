@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "OTDStoreDb":"Server=THUYNGA\\SQLEXPRESS;Database='OTDStore';Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}

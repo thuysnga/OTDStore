@@ -1,0 +1,34 @@
+﻿@model OTDStore.ViewModels.Sales.TimeRequest
+@{
+    ViewData["Title"] = "Thống kê";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Thống kê</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a class="btn btn-success" asp-action="Index" asp-controller="Order">Về danh sách</a>
+        </div>
+        <div class="card-body">
+            <div class="col-md-4">
+                <form asp-action="RevenueStatistic">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="beginT" class="control-label"></label>
+                        <input asp-for="beginT" class="form-control" />
+                        <span asp-validation-for="beginT" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="endT" class="control-label"></label>
+                        <input asp-for="endT" class="form-control" />
+                        <span asp-validation-for="endT" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Xuất doanh thu" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

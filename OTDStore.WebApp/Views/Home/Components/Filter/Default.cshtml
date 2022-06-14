@@ -1,0 +1,82 @@
+﻿@model List<OTDStore.ViewModels.Catalog.Categories.CategoryVM>
+
+<div class="nav-filter">
+    <div class="nav-filter-top">
+        <div class="nav-filter-title">
+            <i class="fas fa-sliders-h"></i>
+            <h3>Filter</h3>
+        </div>
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="nav-filter-bottom">
+        <div class="nav-filter-option">
+            <p>Loại</p>
+            <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                @{
+                    var parents = Model.Where(x => x.ParentId == null);
+                }
+                @for (int index = 0; index < parents.Count(); index++)
+                {
+                    var parent = parents.ElementAt(index);
+                    var children = Model.Where(x => x.ParentId == parent.Id);
+                    if (children.Any())
+                    {
+                        <li class="subMenu open">
+                            <a> @parent.Name</a>
+                            <ul>
+                                @foreach (var item in children)
+                                {
+                                    <li><a class="active" href="/categories/@item.Id"><i class="icon-chevron-right"></i>@item.Name </a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/categories/@parent.Id">@parent.Name</a></li>
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="nav-filter-option">
+            <p>Hãng</p>
+            <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                @{
+                    var parents1 = Model.Where(x => x.ParentId == null);
+                }
+                @for (int index = 0; index < parents1.Count(); index++)
+                {
+                    var parent1 = parents1.ElementAt(index);
+                    var children1 = Model.Where(x => x.ParentId == parent1.Id);
+                    if (children1.Any())
+                    {
+                        <li class="subMenu open">
+                        <a> @parent1.Name</a>
+                        <ul>
+                            @foreach (var item in children1)
+                            {
+                                <li><a class="active" href="/categories/@item.Id"><i class="icon-chevron-right"></i>@item.Name </a></li>
+                            }
+                        </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/categories/@parent1.Id">@parent1.Name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="nav-filter-option">
+            <p>Giá</p>
+            <select name="" id="" class="nav-filter__menu">
+                <option value="">Tất cả</option>
+                <option value="">0 - 10 triệu</option>
+                <option value="">10 - 20 triệu</option>
+                <option value="">Trên 20 triệu</option>
+            </select>
+        </div>
+        <hr>
+    </div>
+</div>
