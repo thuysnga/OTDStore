@@ -1,11 +1,9 @@
 # INTRODUCTION ABOUT SUBJECT
 * *Subject:* Introduction To Software Engineering
 * *Class:* SE104.M21.PMCL
-* *Lcture:* sc.Nguyen Thi Thanh Truc
-
+* *Lecture:* sc.Nguyen Thi Thanh Truc
 # OTDStore
-
-# <h2>Function summary</h2>
+<h2>Function summary</h2>
 -Customer
 + Log in, Sign up
 + View products, buy and order
